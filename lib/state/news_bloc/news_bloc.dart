@@ -11,7 +11,7 @@ class NewsBloc extends Bloc<IEvent, NewsState> {
   NewsBloc()
       : super(NewsState(
           news: [],
-          isLoading: false,
+          isLoading: true,
         )) {
     on<ChangeNewsToFavoriteEvent>(_changeNewsToFavorite);
     on<ChangeNewsToLikeEvent>(_changeNewsToLike);
@@ -23,7 +23,7 @@ class NewsBloc extends Bloc<IEvent, NewsState> {
     final box = Hive.box<INews>(HiveBoxName.favorites);
 
     print(box.values.length);
-    if (box.values.toList().isEmpty ||
+    if (
         !box.values.toList().any((element) => element == event.news)) {
       box.add(event.news);
     } else {
@@ -36,7 +36,7 @@ class NewsBloc extends Bloc<IEvent, NewsState> {
     final box = Hive.box<INews>(HiveBoxName.likes);
 
     print(box.values.length);
-    if (box.values.toList().isEmpty ||
+    if (
         !box.values.toList().any((element) => element == event.news)) {
       box.add(event.news);
     } else {

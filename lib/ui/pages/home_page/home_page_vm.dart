@@ -18,7 +18,7 @@ class HomePageViewModel extends IViewModel {
         : watch<NewsState>().news.whereType<RegularNews>().toList();
     popularNews = () {
       final news = watch<NewsState>().news.whereType<RegularNews>().toList();
-      news.sort((a, b) => a.likes.compareTo(b.likes));
+      news.sort((a, b) => b.likes.compareTo(a.likes));
       return news;
     }();
     favoritesNews = Hive.box<INews>(HiveBoxName.favorites).values.toList();

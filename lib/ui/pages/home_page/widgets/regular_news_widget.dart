@@ -8,6 +8,7 @@ import 'package:lampa_test_task/ui/pages/home_page/widgets/child_age_widget.dart
 import 'package:intl/intl.dart' as intl;
 import 'package:lampa_test_task/ui/pages/home_page/widgets/comment_card.dart';
 import 'package:lampa_test_task/ui/pages/home_page/widgets/custom_animated_icon.dart';
+import 'package:share/share.dart';
 
 class RegularNewsWidget extends StatefulWidget {
   final RegularNews news;
@@ -124,7 +125,13 @@ class _RegularNewsWidgetState extends State<RegularNewsWidget> with SingleTicker
                   style: AppData.textStyle.ubuntuLight.copyWith(color: AppData.colors.grey),
                 ),
                 const SizedBox(width: 16.0),
-                Icon(Icons.share_outlined, size: 25, color: AppData.colors.grey),
+                IconButton(
+                  onPressed: () => Share.share(
+                    widget.news.title,
+                    subject: widget.news.content,
+                  ),
+                  icon: Icon(Icons.share_outlined, size: 25, color: AppData.colors.grey),
+                ),
                 const Spacer(),
                 CustomAnimateIcon(
                   child: isFavorites ? Icons.star : Icons.star_border,

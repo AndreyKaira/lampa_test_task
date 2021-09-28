@@ -2,7 +2,7 @@
     package="com.example.lampa_test_task">
    <application
         android:label="lampa_test_task"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

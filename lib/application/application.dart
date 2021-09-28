@@ -10,6 +10,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Lampa Test Task',
       debugShowCheckedModeBanner: false,
       locale: Locale(AppData.constants.ru),
       supportedLocales: [Locale(AppData.constants.ru)],
@@ -18,6 +19,11 @@ class Application extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      theme: Theme.of(context).copyWith(
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: AppData.colors.teal, // but now it should be declared like this
+        ),
+      ),
       home: BlocHolder<NewsState>(
         bloc: NewsBloc(),
         child: HomePage(),
