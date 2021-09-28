@@ -5,7 +5,7 @@ import 'package:lampa_test_task/res/app_data.dart';
 class ChildAgeWidget extends StatelessWidget {
   final Child child;
 
-  ChildAgeWidget({required this.child});
+  const ChildAgeWidget({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,6 @@ class ChildAgeWidget extends StatelessWidget {
     final date = DateTime.now().difference(child.bithday);
 
     if (date.inDays < 30) {
-      print(date.inDays);
       return '${date.inDays ~/ 7}н';
     } else if (date.inDays < 365) {
       return '${date.inDays ~/ 30}м';

@@ -9,5 +9,7 @@ class AppConst{
 
   final String ru = 'ru';
 
+  final String emptyString = '';
+
   const AppConst();
 }

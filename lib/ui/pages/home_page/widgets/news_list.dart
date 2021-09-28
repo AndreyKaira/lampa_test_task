@@ -1,4 +1,3 @@
-import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:lampa_test_task/bloc/bloc_widgets.dart';
 import 'package:lampa_test_task/entity/enums/type_news_enum.dart';
@@ -8,11 +7,11 @@ import 'package:lampa_test_task/entity/news/theme_day_news/theme_day_news.dart';
 import 'package:lampa_test_task/res/app_data.dart';
 import 'package:lampa_test_task/state/news_bloc/news_bloc_events.dart';
 import 'package:lampa_test_task/ui/pages/home_page/home_page_vm.dart';
-import 'package:lampa_test_task/ui/pages/home_page/widgets/regular_news_widget.dart';
+import 'regular_news_widget/regular_news_widget.dart';
 import 'package:lampa_test_task/ui/pages/home_page/widgets/theme_day_news_widget.dart';
 
 class NewsList extends StatelessWidget {
-  final List<INews> news;
+  final List<dynamic> news;
 
   NewsList({
     required this.news,

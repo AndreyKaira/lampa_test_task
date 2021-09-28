@@ -21,7 +21,7 @@ class HomePageViewModel extends IViewModel {
       news.sort((a, b) => b.likes.compareTo(a.likes));
       return news;
     }();
-    favoritesNews = Hive.box<INews>(HiveBoxName.favorites).values.toList();
+    favoritesNews = List<INews>.unmodifiable(Hive.box(HiveBoxName.favorites).values.toList());
     isLoading = watch<NewsState>().isLoading;
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:lampa_test_task/bloc/bloc_interfaces.dart';
-import 'package:lampa_test_task/entity/news/interface/i_news.dart';
 import 'package:lampa_test_task/managers/hive_manager.dart';
 import 'package:lampa_test_task/res/dummy_data.dart';
 import 'package:lampa_test_task/state/news_bloc/news_bloc_events.dart';
@@ -20,11 +19,9 @@ class NewsBloc extends Bloc<IEvent, NewsState> {
   }
 
   void _changeNewsToFavorite(ChangeNewsToFavoriteEvent event, Emitter emitter) {
-    final box = Hive.box<INews>(HiveBoxName.favorites);
+    final box = Hive.box(HiveBoxName.favorites);
 
-    print(box.values.length);
-    if (
-        !box.values.toList().any((element) => element == event.news)) {
+    if (!box.values.toList().any((element) => element == event.news)) {
       box.add(event.news);
     } else {
       box.deleteAt(box.values.toList().indexOf(event.news));
@@ -33,11 +30,9 @@ class NewsBloc extends Bloc<IEvent, NewsState> {
   }
 
   void _changeNewsToLike(ChangeNewsToLikeEvent event, Emitter emitter) {
-    final box = Hive.box<INews>(HiveBoxName.likes);
+    final box = Hive.box(HiveBoxName.likes);
 
-    print(box.values.length);
-    if (
-        !box.values.toList().any((element) => element == event.news)) {
+    if (!box.values.toList().any((element) => element == event.news)) {
       box.add(event.news);
     } else {
       box.deleteAt(box.values.toList().indexOf(event.news));
